@@ -1,0 +1,15 @@
+﻿<Window x:Class="CommandRunner.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+xmlns:lang="clr-namespace:CommandRunner;assembly=CommandRunner"
+        xmlns:local="clr-namespace:CommandRunner"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+  <Grid>
+      <Label Name="commandTextBoxLabel" Target="{Binding ElementName=commandTextBox}" Content="{x:Static lang:Resources.commandLabel}" TextBlock.FontSize="20" HorizontalAlignment="Left" Margin="0,8,0,8"/>
+    <TextBox Name="commandTextBox" Width="200"/>
+  </Grid>
+</Window>
+
