@@ -68,5 +68,32 @@ namespace CommandRunner {
                 return ResourceManager.GetString("commandLabel", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Output.
+        /// </summary>
+        public static string outputLabel {
+            get {
+                return ResourceManager.GetString("outputLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Run.
+        /// </summary>
+        public static string runButton {
+            get {
+                return ResourceManager.GetString("runButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Working directory.
+        /// </summary>
+        public static string workingDirLabel {
+            get {
+                return ResourceManager.GetString("workingDirLabel", resourceCulture);
+            }
+        }
     }
 }

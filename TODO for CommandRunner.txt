@@ -1,0 +1,2 @@
+## TODO
+* Verify if fitting textboxes to window size.
