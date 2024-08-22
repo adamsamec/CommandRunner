@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Shapes;
 
 namespace CommandRunner
 {
@@ -18,6 +19,12 @@ namespace CommandRunner
 
         private void runButton_Click(object sender, RoutedEventArgs e)
         {
+            _runner.Run(commandTextBox.Text);
+        }
+
+        public void AppendToOutput(String text)
+        {
+            outputTextBox.Text += text;
         }
     }
 }
