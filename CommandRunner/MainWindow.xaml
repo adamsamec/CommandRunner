@@ -6,15 +6,19 @@
 xmlns:lang="clr-namespace:CommandRunner;assembly=CommandRunner"
         xmlns:local="clr-namespace:CommandRunner"
         mc:Ignorable="d"
-        Title="CommandRunner" Height="500" Width="800">
+        Title="{x:Static lang:Resources.mainWindowTitle}"
+Height="500" Width="800"
+Loaded="MainWindow_Loaded">
   <Grid>
-      <Label Name="commandTextBoxLabel" Target="{Binding ElementName=commandTextBox}" Content="{x:Static lang:Resources.commandLabel}" TextBlock.FontSize="20" HorizontalAlignment="Left" Margin="0,10,0,10"/>
-    <TextBox Name="commandTextBox" HorizontalAlignment="Stretch"/>
-    <Label Name="workingDirTextBoxLabel" Target="{Binding ElementName=workingDirTextBox}" Content="{x:Static lang:Resources.workingDirLabel}" TextBlock.FontSize="20" HorizontalAlignment="Left" Margin="0,10,0,10"/>
-    <TextBox Name="workingDirTextBox" HorizontalAlignment="Stretch"/>
+    <Label Name="commandComboBoxLabel" Target="{Binding ElementName=commandComboBox}" Content="{x:Static lang:Resources.commandLabel}" TextBlock.FontSize="20" HorizontalAlignment="Left" Margin="0,10,0,10"/>
+    <ComboBox Name="commandComboBox" IsEditable="True" HorizontalAlignment="Stretch"/>
+    <Label Name="workingDirComboBoxLabel" Target="{Binding ElementName=workingDirComboBox}" Content="{x:Static lang:Resources.workingDirLabel}" TextBlock.FontSize="20" HorizontalAlignment="Left" Margin="0,10,0,10"/>
+    <ComboBox Name="workingDirComboBox" IsEditable="True" HorizontalAlignment="Stretch"/>
 
     <Button Name="runButton" Content="{x:Static lang:Resources.runButton}"
 Click="runButton_Click"/>
+    <Button Name="killButton" Content="{x:Static lang:Resources.killButton}"
+Click="killButton_Click"/>
 
     <Label Name="outputTextBoxLabel" Target="{Binding ElementName=outputTextBox}" Content="{x:Static lang:Resources.outputLabel}" TextBlock.FontSize="20" HorizontalAlignment="Left" Margin="0,10,0,10"/>
     <TextBox Name="outputTextBox" HorizontalAlignment="Stretch"/>

@@ -126,10 +126,22 @@
   <data name="workingDirLabel" xml:space="preserve">
     <value>Working directory</value>
   </data>
+  <data name="chooseDirButton" xml:space="preserve">
+    <value>Choose directory</value>
+  </data>
   <data name="runButton" xml:space="preserve">
     <value>Run</value>
   </data>
+  <data name="killButton" xml:space="preserve">
+    <value>Kill process</value>
+  </data>
   <data name="outputLabel" xml:space="preserve">
     <value>Output</value>
+  </data>
+  <data name="settingsButton" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="settingsWindowTitle" xml:space="preserve">
+    <value>Settings</value>
   </data>
 </root>

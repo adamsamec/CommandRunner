@@ -61,11 +61,38 @@ namespace CommandRunner {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Choose directory.
+        /// </summary>
+        public static string chooseDirButton {
+            get {
+                return ResourceManager.GetString("chooseDirButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Command.
         /// </summary>
         public static string commandLabel {
             get {
                 return ResourceManager.GetString("commandLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kill.
+        /// </summary>
+        public static string killButton {
+            get {
+                return ResourceManager.GetString("killButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CommandRunner.
+        /// </summary>
+        public static string mainWindowTitle {
+            get {
+                return ResourceManager.GetString("mainWindowTitle", resourceCulture);
             }
         }
         
@@ -84,6 +111,24 @@ namespace CommandRunner {
         public static string runButton {
             get {
                 return ResourceManager.GetString("runButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        public static string settingsButton {
+            get {
+                return ResourceManager.GetString("settingsButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        public static string settingsWindowTitle {
+            get {
+                return ResourceManager.GetString("settingsWindowTitle", resourceCulture);
             }
         }
         
