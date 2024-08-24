@@ -59,7 +59,7 @@ namespace CommandRunner
 
             // Set missing JSON properties to defaults
             Utils.SetYesOrNo(settings, defaultSettings, ["checkForUpdateOnLaunch", "outputEnabled", "findBackward", "ignoreCase", "playSuccessSound", "playErrorSound"]);
-            Utils.SetStringArray(history, defaultHistory, ["commands", "workingDirs", "findTexts"]);
+            Utils.SetNotNull(history, defaultHistory, ["commands", "workingDirs", "findTexts"]);
             Save();
         }
 

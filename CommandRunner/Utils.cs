@@ -32,14 +32,13 @@ namespace CommandRunner
             }
         }
 
-        public static void SetStringArray(object obj, object defaultObj, string[] propNames)
+        public static void SetNotNull(object obj, object defaultObj, string[] propNames)
         {
             foreach (var propName in propNames)
             {
                 var propValue = (string[]?)GetPropValue(obj, propName);
                 var defaultPropValue = (string[]?)GetPropValue(defaultObj, propName);
-                var expectedType = typeof(string[]);
-                var newPropValue = (propValue != null && propValue.GetType().IsAssignableFrom(expectedType)) ? propValue : defaultPropValue;
+                var newPropValue = propValue != null ? propValue : defaultPropValue;
                 SetPropValue(obj, propName, newPropValue);
             }
         }
