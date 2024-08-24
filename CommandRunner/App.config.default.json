@@ -1,0 +1,17 @@
+{
+  "history": {
+    "commands": [],
+    "workingDirs": [],
+    "findTexts": []
+  },
+  "settings": {
+    "checkForUpdateOnLaunch": "yes",
+    "outputEnabled": "yes",
+    "findBackward": "no",
+    "ignoreCase": "yes",
+    "playSuccessSound": "no",
+    "successRegex": "",
+    "playErrorSound": "no",
+    "errorRegex": ""
+  }
+}
