@@ -6,7 +6,7 @@
 xmlns:lang="clr-namespace:CommandRunner;assembly=CommandRunner"
         xmlns:local="clr-namespace:CommandRunner"
         mc:Ignorable="d"
-        Title="{x:Static lang:Resources.mainWindowTitle}"
+        Title="{x:Static lang:Consts.AppName}"
 Height="500" Width="800"
 Loaded="MainWindow_Loaded">
   <Grid>

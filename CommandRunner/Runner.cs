@@ -41,6 +41,7 @@ namespace CommandRunner
             _runningProcess.StartInfo = startInfo;
             _runningProcess.Start();
             _isRunning = true;
+            _mainWindow.Title = command + Consts.WindowTitleSeparator + Consts.AppName;
 
             var thread = new Thread(() =>
             {
@@ -53,7 +54,8 @@ namespace CommandRunner
                 }
                 _isRunning = false;
                     _mainWindow.Dispatcher.BeginInvoke((Action)(() => {
-                _mainWindow.AllowRunning();
+                        _mainWindow.AllowRunning();
+                ResetMainWindowTitle();
                     }));
                     });
             thread.Start();
@@ -66,8 +68,13 @@ if (!IsRunning)
                 return;
             }
             _runningProcess.Kill(true);
-
             _isRunning = false;
+            ResetMainWindowTitle();
+        }
+
+        private void ResetMainWindowTitle()
+        {
+            _mainWindow.Title = Consts.AppName;
         }
     }
 }
