@@ -9,7 +9,10 @@ namespace CommandRunner
     {
         public const string AppVersion = "1.0.0";
         public const string AppName = "CommandRunner";
+
         public const string WindowTitleSeparator = " | ";
+        public const int HistorySize = 10;
+
         // URLs
         public const string UpdateApiUrl = "http://api.adamsamec.cz/CommandRunner/Update.json";
         public const string ChangeLogUrl = "https://raw.githubusercontent.com/adamsamec/CommandRunner/main/ChangeLog/ChangeLog.{0}.md";

@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using System.Windows.Shapes;
 
 namespace CommandRunner
 {
@@ -19,6 +18,10 @@ namespace CommandRunner
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            // Set history from config
+            var commandHistory = _runner.ConvertHistoryToList(_runner.AppHistory.commands);
+            UpdateCommandsHistory(commandHistory);
+
             killButton.IsEnabled = false;
             commandComboBox.Focus();
         }
@@ -70,7 +73,16 @@ namespace CommandRunner
         {
             runButton.IsEnabled = false;
             killButton.IsEnabled = true;
-                outputTextBox.Focus();
+            outputTextBox.Focus();
+        }
+
+        public void UpdateCommandsHistory(List<string> commands)
+        {
+            commandComboBox.Items.Clear();
+            foreach (string command in commands)
+            {
+                commandComboBox.Items.Add(command);
+            }
+        }
         }
     }
-}

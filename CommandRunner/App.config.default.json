@@ -1,9 +1,4 @@
 {
-  "history": {
-    "commands": [],
-    "workingDirs": [],
-    "findTexts": []
-  },
   "settings": {
     "checkForUpdateOnLaunch": "yes",
     "outputEnabled": "yes",
@@ -13,5 +8,10 @@
     "successRegex": "",
     "playErrorSound": "no",
     "errorRegex": ""
+  },
+  "history": {
+    "commands": [],
+    "workingDirs": [],
+    "findTexts": []
   }
 }

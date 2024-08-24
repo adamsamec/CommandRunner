@@ -17,6 +17,10 @@ namespace CommandRunner
         {
             get { return _config.settings; }
         }
+        public History AppHistory
+        {
+            get { return _config.history; }
+        }
 
         private const string TrueString = "yes";
         private const string FalseString = "no";
@@ -42,6 +46,7 @@ namespace CommandRunner
             }
             _config = config as ConfigJson;
             var settings = _config.settings;
+            var history = _config.history;
 
             var defaultConfigString = File.ReadAllText(defaultPath, Encoding.UTF8);
             var defaultConfig = JsonSerializer.Deserialize<ConfigJson>(defaultConfigString);
@@ -50,9 +55,11 @@ namespace CommandRunner
                 throw new SerializationException("Unable to deserialize default config file");
             }
             var defaultSettings = defaultConfig.settings;
+            var defaultHistory = defaultConfig.history;
 
             // Set missing JSON properties to defaults
             Utils.SetYesOrNo(settings, defaultSettings, ["checkForUpdateOnLaunch", "outputEnabled", "findBackward", "ignoreCase", "playSuccessSound", "playErrorSound"]);
+            Utils.SetStringArray(history, defaultHistory, ["commands", "workingDirs", "findTexts"]);
             Save();
         }
 
