@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace CommandRunner
 {
@@ -20,7 +21,7 @@ namespace CommandRunner
         {
             // Set history from config
             var commandHistory = _runner.ConvertHistoryToList(_runner.AppHistory.commands);
-            UpdateCommandsHistory(commandHistory);
+            UpdateHistory(commandHistory, Runner.HistoryType.Commands);
 
             killButton.IsEnabled = false;
             commandComboBox.Focus();
@@ -76,13 +77,23 @@ namespace CommandRunner
             outputTextBox.Focus();
         }
 
-        public void UpdateCommandsHistory(List<string> commands)
+        public void UpdateHistory(List<string> items, Runner.HistoryType type)
         {
-            commandComboBox.Items.Clear();
-            foreach (string command in commands)
+            ComboBox? comboBox = null;
+            switch (type)
             {
-                commandComboBox.Items.Add(command);
+                case Runner.HistoryType.Commands:
+                    comboBox = commandComboBox;
+                    break;
+            }
+            if (comboBox != null)
+            {
+            comboBox.Items.Clear();
+            foreach (string item in items)
+            {
+                comboBox.Items.Add(item);
+            }
             }
         }
-        }
+    }
     }

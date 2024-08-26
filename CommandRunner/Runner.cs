@@ -25,6 +25,13 @@ namespace CommandRunner
             get { return _isRunning; }
         }
 
+        public enum HistoryType
+        {
+            Commands,
+            WorkingDirs,
+            FindTexts
+        }
+
         public Runner(MainWindow mainWindow)
         {
             _mainWindow = mainWindow;
@@ -50,7 +57,7 @@ namespace CommandRunner
             _runningProcess.StartInfo = startInfo;
             _runningProcess.Start();
             _isRunning = true;
-            AddToCommandHistory(command);
+            AddToHistory(command, AppHistory.commands, HistoryType.Commands);
             _mainWindow.Title = command + Consts.WindowTitleSeparator + Consts.AppName;
 
             var thread = new Thread(() =>
@@ -89,23 +96,29 @@ namespace CommandRunner
             _mainWindow.Title = Consts.AppName;
         }
 
-        private void AddToCommandHistory(string command)
+        private void AddToHistory(string item, string[] history, HistoryType type)
         {
-            var history = ConvertHistoryToList(AppHistory.commands);
+            var historyList = ConvertHistoryToList(history);
 
             // Remove the item if already in history, then add item
-            history = history.Where(item => item != command).ToList();
-            history.Insert(0, command);
+            historyList = historyList.Where(existingItem => item != existingItem).ToList();
+            historyList.Insert(0, item);
 
             // Limit the number of stored items
-            if (history.Count() >= Consts.HistorySize + 1)
+            if (historyList.Count() >= Consts.HistorySize + 1)
             {
-                history.RemoveAt(Consts.HistorySize);
+                historyList.RemoveAt(Consts.HistorySize);
             }
 
             // Update the new history
-                AppHistory.commands = history.ToArray();
-        _mainWindow.UpdateCommandsHistory(history);
+            var newHistory = historyList.ToArray();
+            switch (type)
+            {
+                case HistoryType.Commands:
+                AppHistory.commands = newHistory;
+                    break;
+            }
+        _mainWindow.UpdateHistory(historyList, type);
 
             SaveSettings();
         }
