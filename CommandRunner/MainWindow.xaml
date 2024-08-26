@@ -11,9 +11,9 @@ Height="500" Width="800"
 Loaded="MainWindow_Loaded">
   <Grid>
     <Label Name="commandComboBoxLabel" Target="{Binding ElementName=commandComboBox}" Content="{x:Static lang:Resources.commandLabel}" TextBlock.FontSize="20" HorizontalAlignment="Left" Margin="0,10,0,10"/>
-    <ComboBox Name="commandComboBox" IsEditable="True" HorizontalAlignment="Stretch"/>
+    <local:DownArrowDropdownComboBox x:Name="commandComboBox" IsEditable="True" HorizontalAlignment="Stretch"/>
     <Label Name="workingDirComboBoxLabel" Target="{Binding ElementName=workingDirComboBox}" Content="{x:Static lang:Resources.workingDirLabel}" TextBlock.FontSize="20" HorizontalAlignment="Left" Margin="0,10,0,10"/>
-    <ComboBox Name="workingDirComboBox" IsEditable="True" HorizontalAlignment="Stretch"/>
+    <local:DownArrowDropdownComboBox x:Name="workingDirComboBox" IsEditable="True" HorizontalAlignment="Stretch"/>
 
     <Button Name="runButton" Content="{x:Static lang:Resources.runButton}"
 Click="runButton_Click"/>
