@@ -37,29 +37,33 @@ namespace CommandRunner
             _mainWindow = mainWindow;
         }
 
-        public void RunCommand(string command)
+        public void RunCommand(string command, string workingDir)
         {
-            if (IsRunning)
+
+            // Ignore when already running or whitespace only command
+            if (IsRunning || command.Trim() == "")
             {
                 return;
             }
             _runningProcess = new Process();
             var startInfo = new ProcessStartInfo()
             {
+                FileName = "cmd.exe",
+                Arguments = "/C " + command + " 2>&1",
+                WorkingDirectory = workingDir,
+                Verb = "runas",
                 CreateNoWindow = true,
                 WindowStyle = ProcessWindowStyle.Hidden,
-                FileName = "cmd.exe",
-                Arguments = "/C " + command,
-                Verb = "runas",
-                RedirectStandardError = true,
                 RedirectStandardOutput = true
             };
             _runningProcess.StartInfo = startInfo;
             _runningProcess.Start();
             _isRunning = true;
             AddToHistory(command, AppHistory.commands, HistoryType.Commands);
+            AddToHistory(workingDir, AppHistory.workingDirs, HistoryType.WorkingDirs);
             _mainWindow.Title = command + Consts.WindowTitleSeparator + Consts.AppName;
 
+            // Run the command in a new thread
             var thread = new Thread(() =>
             {
                 while (_runningProcess.StandardOutput.Peek() >= 0)
@@ -98,27 +102,35 @@ namespace CommandRunner
 
         private void AddToHistory(string item, string[] history, HistoryType type)
         {
-            var historyList = ConvertHistoryToList(history);
+            //  Ignore whitespace only items
+            if (item.Trim() == "")
+            {
+                return;
+            }
+            var newHistoryList = ConvertHistoryToList(history);
 
             // Remove the item if already in history, then add item
-            historyList = historyList.Where(existingItem => item != existingItem).ToList();
-            historyList.Insert(0, item);
+            newHistoryList = newHistoryList.Where(existingItem => item != existingItem).ToList();
+        newHistoryList.Insert(0, item);
 
             // Limit the number of stored items
-            if (historyList.Count() >= Consts.HistorySize + 1)
+            if (newHistoryList.Count() >= Consts.HistorySize + 1)
             {
-                historyList.RemoveAt(Consts.HistorySize);
+                newHistoryList.RemoveAt(Consts.HistorySize);
             }
 
             // Update the new history
-            var newHistory = historyList.ToArray();
+            var newHistory = newHistoryList.ToArray();
             switch (type)
             {
                 case HistoryType.Commands:
                 AppHistory.commands = newHistory;
                     break;
+                case HistoryType.WorkingDirs:
+                AppHistory.workingDirs = newHistory;
+                    break;
             }
-        _mainWindow.UpdateHistory(historyList, type);
+            _mainWindow.UpdateHistory(newHistoryList, type);
 
             SaveSettings();
         }

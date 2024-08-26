@@ -20,8 +20,10 @@ namespace CommandRunner
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             // Set history from config
-            var commandHistory = _runner.ConvertHistoryToList(_runner.AppHistory.commands);
-            UpdateHistory(commandHistory, Runner.HistoryType.Commands);
+            var commandsHistory = _runner.ConvertHistoryToList(_runner.AppHistory.commands);
+            var workingDirsHistory = _runner.ConvertHistoryToList(_runner.AppHistory.workingDirs);
+            UpdateHistory(commandsHistory, Runner.HistoryType.Commands);
+            UpdateHistory(workingDirsHistory, Runner.HistoryType.WorkingDirs);
 
             killButton.IsEnabled = false;
             commandComboBox.Focus();
@@ -44,7 +46,7 @@ namespace CommandRunner
 
         public void RunCommand()
         {
-            _runner.RunCommand(commandComboBox.Text);
+            _runner.RunCommand(commandComboBox.Text, workingDirComboBox.Text);
             if (_runner.IsRunning)
             {
                 DisallowRunningAndFocusOutput();
@@ -85,10 +87,17 @@ namespace CommandRunner
                 case Runner.HistoryType.Commands:
                     comboBox = commandComboBox;
                     break;
+                case Runner.HistoryType.WorkingDirs:
+                    comboBox = workingDirComboBox;
+                    break;
             }
             if (comboBox != null)
             {
             comboBox.Items.Clear();
+                if (items.Count() >= 1)
+                {
+                comboBox.Text = items[0];
+                }
             foreach (string item in items)
             {
                 comboBox.Items.Add(item);

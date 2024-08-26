@@ -1,3 +1,2 @@
 ## TODO
-* Echo also command errors into output.
 * Verify if fitting textboxes to window size.
