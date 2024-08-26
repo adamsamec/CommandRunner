@@ -26,6 +26,8 @@ namespace CommandRunner
             UpdateHistory(workingDirsHistory, Runner.HistoryType.WorkingDirs);
 
             killButton.IsEnabled = false;
+
+            // Set initial focus
             commandComboBox.Focus();
         }
 
@@ -38,6 +40,22 @@ namespace CommandRunner
         {
             KillRunningProcess();
         }
+
+        private void clearButton_Click(object sender, RoutedEventArgs e)
+{
+}
+
+        private void copyButton_Click(object sender, RoutedEventArgs e)
+{
+}
+
+        private void settingsButton_Click(object sender, RoutedEventArgs e)
+{
+}
+
+        private void helpButton_Click(object sender, RoutedEventArgs e)
+{
+}
 
         public void AppendToOutput(string text)
         {

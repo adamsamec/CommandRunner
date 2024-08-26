@@ -61,11 +61,47 @@ namespace CommandRunner {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Check for update.
+        /// </summary>
+        public static string checkForUpdateButton {
+            get {
+                return ResourceManager.GetString("checkForUpdateButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Automatically check for update on launch.
+        /// </summary>
+        public static string checkForUpdateOnLaunchCheckBox {
+            get {
+                return ResourceManager.GetString("checkForUpdateOnLaunchCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Choose directory.
         /// </summary>
         public static string chooseDirButton {
             get {
                 return ResourceManager.GetString("chooseDirButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clear output.
+        /// </summary>
+        public static string clearOutputButton {
+            get {
+                return ResourceManager.GetString("clearOutputButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        public static string closeButton {
+            get {
+                return ResourceManager.GetString("closeButton", resourceCulture);
             }
         }
         
@@ -79,20 +115,38 @@ namespace CommandRunner {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Kill.
+        ///   Looks up a localized string similar to Copy output.
         /// </summary>
-        public static string killButton {
+        public static string copyOutputButton {
             get {
-                return ResourceManager.GetString("killButton", resourceCulture);
+                return ResourceManager.GetString("copyOutputButton", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to CommandRunner.
+        ///   Looks up a localized string similar to Error regular expression.
         /// </summary>
-        public static string mainWindowTitle {
+        public static string errorRegexLabel {
             get {
-                return ResourceManager.GetString("mainWindowTitle", resourceCulture);
+                return ResourceManager.GetString("errorRegexLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Help.
+        /// </summary>
+        public static string helpButton {
+            get {
+                return ResourceManager.GetString("helpButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kill process.
+        /// </summary>
+        public static string killButton {
+            get {
+                return ResourceManager.GetString("killButton", resourceCulture);
             }
         }
         
@@ -102,6 +156,24 @@ namespace CommandRunner {
         public static string outputLabel {
             get {
                 return ResourceManager.GetString("outputLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Play error sound when regular expression matches.
+        /// </summary>
+        public static string playErrorSoundCheckBox {
+            get {
+                return ResourceManager.GetString("playErrorSoundCheckBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Play success sound when regular expression matches.
+        /// </summary>
+        public static string playSuccessSoundCheckBox {
+            get {
+                return ResourceManager.GetString("playSuccessSoundCheckBox", resourceCulture);
             }
         }
         
@@ -126,9 +198,18 @@ namespace CommandRunner {
         /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
-        public static string settingsWindowTitle {
+        public static string settingsDialogTitle {
             get {
-                return ResourceManager.GetString("settingsWindowTitle", resourceCulture);
+                return ResourceManager.GetString("settingsDialogTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Success regular expression.
+        /// </summary>
+        public static string successRegexLabel {
+            get {
+                return ResourceManager.GetString("successRegexLabel", resourceCulture);
             }
         }
         

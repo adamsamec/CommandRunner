@@ -135,10 +135,40 @@
   <data name="outputLabel" xml:space="preserve">
     <value>Output</value>
   </data>
+  <data name="clearOutputButton" xml:space="preserve">
+    <value>Clear output</value>
+  </data>
+  <data name="copyOutputButton" xml:space="preserve">
+    <value>Copy output</value>
+  </data>
   <data name="settingsButton" xml:space="preserve">
     <value>Settings</value>
   </data>
-  <data name="settingsWindowTitle" xml:space="preserve">
+  <data name="helpButton" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="closeButton" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="settingsDialogTitle" xml:space="preserve">
     <value>Settings</value>
+  </data>
+  <data name="checkForUpdateOnLaunchCheckBox" xml:space="preserve">
+    <value>Automatically check for update on launch</value>
+  </data>
+  <data name="checkForUpdateButton" xml:space="preserve">
+    <value>Check for update</value>
+  </data>
+  <data name="playSuccessSoundCheckBox" xml:space="preserve">
+    <value>Play success sound when regular expression matches</value>
+  </data>
+  <data name="successRegexLabel" xml:space="preserve">
+    <value>Success regular expression</value>
+  </data>
+  <data name="playErrorSoundCheckBox" xml:space="preserve">
+    <value>Play error sound when regular expression matches</value>
+  </data>
+  <data name="errorRegexLabel" xml:space="preserve">
+    <value>Error regular expression</value>
   </data>
 </root>
