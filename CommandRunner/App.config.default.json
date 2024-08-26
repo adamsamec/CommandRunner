@@ -1,8 +1,6 @@
 {
   "settings": {
     "checkForUpdateOnLaunch": "yes",
-    "outputEnabled": "yes",
-    "findBackward": "no",
     "ignoreCase": "yes",
     "playSuccessSound": "no",
     "successRegex": "",

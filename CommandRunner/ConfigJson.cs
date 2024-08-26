@@ -9,8 +9,6 @@ public class ConfigJson
 public class Settings
 {
     public string checkForUpdateOnLaunch { get; set; }
-    public string outputEnabled { get; set; }
-    public string findBackward { get; set; }
     public string ignoreCase { get; set; }
     public string playSuccessSound { get; set; }
     public string successRegex { get; set; }

@@ -89,7 +89,7 @@ namespace CommandRunner
             _mainWindow.Title = Consts.AppName;
         }
 
-        public void AddToCommandHistory(string command)
+        private void AddToCommandHistory(string command)
         {
             var history = ConvertHistoryToList(AppHistory.commands);
 
@@ -113,7 +113,6 @@ namespace CommandRunner
         public List<string> ConvertHistoryToList(string[] history)
         {
             var historyList = new List<string>(history);
-            //var historyList = new List<string>(history.Select(item => (string)item));
             return historyList;
         }
         private void SaveSettings()
