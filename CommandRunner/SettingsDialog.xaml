@@ -26,14 +26,18 @@ Click="checkForUpdateButton_Click"
 Unchecked="playSuccessSoundCheckBox_Unchecked"
                 HorizontalAlignment="Left" />
                 <Label Target="{Binding ElementName=successRegexTextBox}" Content="{x:Static lang:Resources.successRegexLabel}" TextBlock.FontSize="20" HorizontalAlignment="Left" Margin="0,10,0,10"/>
-<TextBox Name="successRegexTextBox" Width="400" HorizontalAlignment="Left"/>
+<TextBox Name="successRegexTextBox"
+TextChanged="successRegexTextBox_TextChanged"
+Width="400" HorizontalAlignment="Left"/>
 
     <CheckBox Name="playErrorSoundCheckBox" Content="{x:Static lang:Resources.playErrorSoundCheckBox}"
 Checked="playErrorSoundCheckBox_Checked"
 Unchecked="playErrorSoundCheckBox_Unchecked"
 HorizontalAlignment="Left" />
 <Label Target="{Binding ElementName=errorRegexTextBox}" Content="{x:Static lang:Resources.errorRegexLabel}" TextBlock.FontSize="20" HorizontalAlignment="Left" Margin="0,10,0,10"/>
-<TextBox Name="errorRegexTextBox" Width="400" HorizontalAlignment="Left"/>
+<TextBox Name="errorRegexTextBox"
+TextChanged="errorRegexTextBox_TextChanged"
+Width="400" HorizontalAlignment="Left"/>
 
     <Button Name="closeButton" Content="{x:Static lang:Resources.closeButton}"
 IsDefault="True"

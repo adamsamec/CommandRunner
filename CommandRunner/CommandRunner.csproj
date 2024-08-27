@@ -28,10 +28,10 @@
     <None Update="App.config.default.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="sounds\error.mp3">
+    <None Update="Sounds\Error.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="sounds\success.mp3">
+    <None Update="Sounds\Success.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

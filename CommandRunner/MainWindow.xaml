@@ -23,8 +23,8 @@ Click="killButton_Click"
 HorizontalAlignment="Left"/>
 
     <Label Target="{Binding ElementName=outputTextBox}" Content="{x:Static lang:Resources.outputLabel}" TextBlock.FontSize="20" HorizontalAlignment="Left" Margin="0,10,0,10"/>
-    <TextBox Name="outputTextBox" IsReadOnly="True"  HorizontalAlignment="Stretch"/>
 
+    <TextBox Name="outputTextBox" HorizontalAlignment="Stretch"/>
     <Button Content="{x:Static lang:Resources.clearOutputButton}"
 Click="copyButton_Click"
 HorizontalAlignment="Left"/>

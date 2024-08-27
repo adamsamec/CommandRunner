@@ -18,6 +18,9 @@ namespace CommandRunner
         public const string ChangeLogUrl = "https://raw.githubusercontent.com/adamsamec/CommandRunner/main/ChangeLog/ChangeLog.{0}.md";
 
         // Paths and filenames
+        public const string SoundsFolder = "Sounds";
+        public static string SuccessSoundFilePath = Path.Combine(InstallFolder, SoundsFolder, "Success.wav");
+        public static string ErrorSoundFilePath = Path.Combine(InstallFolder, SoundsFolder, "Error.wav");
         public const string PagesFolder = "Pages";
         public static string HelpFileRelativePath = Path.Combine(PagesFolder, "Help.{0}.md");
         public static string localUserFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "CommandRunner");

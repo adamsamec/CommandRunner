@@ -24,9 +24,11 @@ namespace CommandRunner
             playSuccessSoundCheckBox.IsChecked = Config.StringToBool(_runner.AppSettings.playSuccessSound);
             playErrorSoundCheckBox.IsChecked = Config.StringToBool(_runner.AppSettings.playErrorSound);
 
-            // Set regex textboxes state according to checkboxes
+            // Set regex textboxes enabled state according to checkboxes and set their values from settings
             successRegexTextBox.IsEnabled = (bool) playSuccessSoundCheckBox.IsChecked;
             errorRegexTextBox.IsEnabled = (bool) playErrorSoundCheckBox.IsChecked;
+            successRegexTextBox.Text = _runner.AppSettings.successRegex;
+            errorRegexTextBox.Text = _runner.AppSettings.errorRegex;
 
             // Set initial focus
             checkForUpdateOnLaunchCheckBox.Focus();
@@ -58,6 +60,11 @@ namespace CommandRunner
             successRegexTextBox.IsEnabled = false;
         }
 
+        private void successRegexTextBox_TextChanged(object sender, RoutedEventArgs e)
+        {
+            _runner.ChangeSuccessRegexSetting(successRegexTextBox.Text);
+        }
+
         private void playErrorSoundCheckBox_Checked(object sender, RoutedEventArgs e)
         {
             _runner.ChangePlayErrorSoundSetting(true);
@@ -68,6 +75,11 @@ namespace CommandRunner
         {
             _runner.ChangePlayErrorSoundSetting(false);
             errorRegexTextBox.IsEnabled = false;
+        }
+
+        private void errorRegexTextBox_TextChanged(object sender, RoutedEventArgs e)
+        {
+            _runner.ChangeErrorRegexSetting(errorRegexTextBox.Text);
         }
     }
 }

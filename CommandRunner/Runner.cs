@@ -1,4 +1,7 @@
 ﻿using System.Diagnostics;
+using System.Media;
+using System.Text.RegularExpressions;
+using System.Windows.Shapes;
 
 namespace CommandRunner
 {
@@ -9,8 +12,10 @@ namespace CommandRunner
     {
         private Config _config = new Config();
         private MainWindow _mainWindow;
-        private Process _runningProcess;
+        private Process? _runningProcess;
         private bool _isRunning = false;
+        private SoundPlayer? _successSoundPlayer;
+        private SoundPlayer? _errorSoundPlayer;
 
         public Settings AppSettings
         {
@@ -31,10 +36,25 @@ namespace CommandRunner
             WorkingDirs,
             FindTexts
         }
+        private enum RegexMatchSound
+        {
+            Success,
+            Error
+        }
 
         public Runner(MainWindow mainWindow)
         {
             _mainWindow = mainWindow;
+
+            InitSoundPlayers();
+        }
+
+private void InitSoundPlayers()
+        {
+            _successSoundPlayer = new SoundPlayer(Consts.SuccessSoundFilePath);
+            _errorSoundPlayer = new SoundPlayer(Consts.ErrorSoundFilePath);
+            _successSoundPlayer.Load();
+            _errorSoundPlayer.Load();
         }
 
         public void RunCommand(string command, string workingDir)
@@ -66,9 +86,14 @@ namespace CommandRunner
             // Run the command in a new thread
             var thread = new Thread(() =>
             {
-                while (_runningProcess.StandardOutput.Peek() >= 0)
-                {
-                    var line = _runningProcess.StandardOutput.ReadLine() + "\r\n";
+            while (_runningProcess.StandardOutput.Peek() >= 0)
+            {
+                var line = _runningProcess.StandardOutput.ReadLine() + "\r\n";
+
+                    // Match line to regexes and possibly play sound
+                    MatchLineAndPlaySound(line, RegexMatchSound.Success);
+                    MatchLineAndPlaySound(line, RegexMatchSound.Error);
+
                     _mainWindow.Dispatcher.BeginInvoke((Action)(() =>
                     {
                         _mainWindow.AppendToOutput(line);
@@ -141,6 +166,36 @@ namespace CommandRunner
             return historyList;
         }
 
+        private void MatchLineAndPlaySound(string line, RegexMatchSound sound)
+        {
+            string? setting = null;
+            string? pattern = null;
+            SoundPlayer? player = null;
+switch (sound)
+            {
+                case RegexMatchSound.Success:
+                    setting = AppSettings.playSuccessSound;
+                    pattern = AppSettings.successRegex;
+                    player = _successSoundPlayer;
+                    break;
+                case RegexMatchSound.Error:
+                    setting = AppSettings.playErrorSound;
+                    pattern = AppSettings.errorRegex;
+                    player = _errorSoundPlayer;
+                    break;
+            }
+            if (Config.StringToBool(setting) && pattern != null)
+            {
+                var regex = new Regex(pattern);
+                var match = regex.Match(line);
+                if (match.Success && player != null)
+                {
+                        player.Play();
+                        Thread.Sleep(500);
+                    }
+            }
+        }
+
         public void ChangeCheckForUpdateOnLaunchSetting(bool value)
         {
             AppSettings.checkForUpdateOnLaunch = Config.BoolToString(value);
@@ -156,6 +211,18 @@ namespace CommandRunner
         public void ChangePlayErrorSoundSetting(bool value)
         {
             AppSettings.playErrorSound = Config.BoolToString(value);
+            SaveSettings();
+        }
+
+        public void ChangeSuccessRegexSetting(string value)
+        {
+            AppSettings.successRegex = value;
+            SaveSettings();
+        }
+
+        public void ChangeErrorRegexSetting(string value)
+        {
+            AppSettings.errorRegex = value;
             SaveSettings();
         }
 

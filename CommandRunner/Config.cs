@@ -58,8 +58,9 @@ namespace CommandRunner
             var defaultHistory = defaultConfig.history;
 
             // Set missing JSON properties to defaults
-            Utils.SetYesOrNo(settings, defaultSettings, ["checkForUpdateOnLaunch", "outputEnabled", "findBackward", "ignoreCase", "playSuccessSound", "playErrorSound"]);
-            Utils.SetNotNull(history, defaultHistory, ["commands", "workingDirs", "findTexts"]);
+            Utils.SetYesOrNo(settings, defaultSettings, ["checkForUpdateOnLaunch", "ignoreCase", "playSuccessSound", "playErrorSound"]);
+            Utils.SetStringNotNull(settings, defaultSettings, ["successRegex", "errorRegex"]);
+            Utils.SetStringArrayNotNull(history, defaultHistory, ["commands", "workingDirs", "findTexts"]);
             Save();
         }
 
