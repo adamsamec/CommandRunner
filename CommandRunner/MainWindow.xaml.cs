@@ -51,7 +51,10 @@ namespace CommandRunner
 
         private void settingsButton_Click(object sender, RoutedEventArgs e)
 {
-}
+            var settingsDialog = new SettingsDialog(_runner);
+            settingsDialog.Owner = this;
+            settingsDialog.ShowDialog();
+        }
 
         private void helpButton_Click(object sender, RoutedEventArgs e)
 {
