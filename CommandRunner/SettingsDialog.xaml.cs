@@ -34,12 +34,12 @@ namespace CommandRunner
 
         private void checkForUpdateOnLaunchCheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            // _runner.ChangeCheckForUpdateOnLaunchSetting(true);
+            _runner.ChangeCheckForUpdateOnLaunchSetting(true);
         }
 
         private void checkForUpdateOnLaunchCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
-            // _runner.ChangeCheckForUpdateOnLaunchSetting(false);
+            _runner.ChangeCheckForUpdateOnLaunchSetting(false);
         }
 
         private void checkForUpdateButton_Click(object sender, RoutedEventArgs e)
@@ -48,21 +48,25 @@ namespace CommandRunner
 
         private void playSuccessSoundCheckBox_Checked(object sender, RoutedEventArgs e)
         {
+            _runner.ChangePlaySuccessSoundSetting(true);
             successRegexTextBox.IsEnabled = true;
         }
 
         private void playSuccessSoundCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
+            _runner.ChangePlaySuccessSoundSetting(false);
             successRegexTextBox.IsEnabled = false;
         }
 
         private void playErrorSoundCheckBox_Checked(object sender, RoutedEventArgs e)
         {
+            _runner.ChangePlayErrorSoundSetting(true);
             errorRegexTextBox.IsEnabled = true;
         }
 
         private void playErrorSoundCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
+            _runner.ChangePlayErrorSoundSetting(false);
             errorRegexTextBox.IsEnabled = false;
         }
     }

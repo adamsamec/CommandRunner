@@ -140,6 +140,25 @@ namespace CommandRunner
             var historyList = new List<string>(history);
             return historyList;
         }
+
+        public void ChangeCheckForUpdateOnLaunchSetting(bool value)
+        {
+            AppSettings.checkForUpdateOnLaunch = Config.BoolToString(value);
+            SaveSettings();
+        }
+
+        public void ChangePlaySuccessSoundSetting(bool value)
+        {
+            AppSettings.playSuccessSound = Config.BoolToString(value);
+            SaveSettings();
+        }
+
+        public void ChangePlayErrorSoundSetting(bool value)
+        {
+            AppSettings.playErrorSound = Config.BoolToString(value);
+            SaveSettings();
+        }
+
         private void SaveSettings()
         {
             _config.Save();
