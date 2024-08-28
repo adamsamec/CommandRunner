@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace CommandRunner
 {
@@ -15,6 +16,8 @@ namespace CommandRunner
             InitializeComponent();
 
             _runner = new Runner(this);
+
+            KeyDown += MainWindow_KeyDown;
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
@@ -29,6 +32,17 @@ namespace CommandRunner
 
             // Set initial focus
             commandComboBox.Focus();
+        }
+
+        private void MainWindow_KeyDown(object sender, KeyEventArgs e)
+        {
+            var isControlDown = Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl);
+            if (isControlDown && e.Key == Key.F)
+            {
+                var findTextDialog = new FindTextDialog(_runner);
+                findTextDialog.Owner = this;
+                findTextDialog.ShowDialog();
+        }
         }
 
         private void runButton_Click(object sender, RoutedEventArgs e)
