@@ -16,6 +16,7 @@ namespace CommandRunner
         private bool _isRunning = false;
         private SoundPlayer? _successSoundPlayer;
         private SoundPlayer? _errorSoundPlayer;
+        private string _findWhatText = "";
 
         public Settings AppSettings
         {
@@ -29,6 +30,7 @@ namespace CommandRunner
         {
             get { return _isRunning; }
         }
+        public FindTextDialog? AppFindTextDialog;
 
         public enum HistoryType
         {
@@ -49,7 +51,7 @@ namespace CommandRunner
             InitSoundPlayers();
         }
 
-private void InitSoundPlayers()
+        private void InitSoundPlayers()
         {
             _successSoundPlayer = new SoundPlayer(Consts.SuccessSoundFilePath);
             _errorSoundPlayer = new SoundPlayer(Consts.ErrorSoundFilePath);
@@ -79,16 +81,16 @@ private void InitSoundPlayers()
             _runningProcess.StartInfo = startInfo;
             _runningProcess.Start();
             _isRunning = true;
-            AddToHistory(command, AppHistory.commands, HistoryType.Commands);
-            AddToHistory(workingDir, AppHistory.workingDirs, HistoryType.WorkingDirs);
+            AddToHistoryConfig(command, HistoryType.Commands);
+            AddToHistoryConfig(workingDir, HistoryType.WorkingDirs);
             _mainWindow.Title = command + Consts.WindowTitleSeparator + Consts.AppName;
 
             // Run the command in a new thread
             var thread = new Thread(() =>
             {
-            while (_runningProcess.StandardOutput.Peek() >= 0)
-            {
-                var line = _runningProcess.StandardOutput.ReadLine() + "\r\n";
+                while (_runningProcess.StandardOutput.Peek() >= 0)
+                {
+                    var line = _runningProcess.StandardOutput.ReadLine() + "\r\n";
 
                     // Match line to regexes and possibly play sound
                     MatchLineAndPlaySound(line, RegexMatchSound.Success);
@@ -125,18 +127,33 @@ private void InitSoundPlayers()
             _mainWindow.Title = Consts.AppName;
         }
 
-        private void AddToHistory(string item, string[] history, HistoryType type)
+        private void AddToHistoryConfig(string item, HistoryType type)
         {
             //  Ignore whitespace only items
             if (item.Trim() == "")
             {
                 return;
             }
+            string[]? history = null;
+            switch (type)
+            {
+                case HistoryType.Commands:
+                    history = AppHistory.commands;
+                    break;
+                case HistoryType.WorkingDirs:
+                    history = AppHistory.workingDirs;
+                    break;
+                case HistoryType.FindTexts:
+                    history = AppHistory.findTexts;
+                    break;
+                default:
+                    return;
+            }
             var newHistoryList = ConvertHistoryToList(history);
 
             // Remove the item if already in history, then add item
             newHistoryList = newHistoryList.Where(existingItem => item != existingItem).ToList();
-        newHistoryList.Insert(0, item);
+            newHistoryList.Insert(0, item);
 
             // Limit the number of stored items
             if (newHistoryList.Count() >= Consts.HistorySize + 1)
@@ -149,10 +166,13 @@ private void InitSoundPlayers()
             switch (type)
             {
                 case HistoryType.Commands:
-                AppHistory.commands = newHistory;
+                    AppHistory.commands = newHistory;
                     break;
                 case HistoryType.WorkingDirs:
-                AppHistory.workingDirs = newHistory;
+                    AppHistory.workingDirs = newHistory;
+                    break;
+                case HistoryType.FindTexts:
+                    AppHistory.findTexts = newHistory;
                     break;
             }
             _mainWindow.UpdateHistory(newHistoryList, type);
@@ -171,7 +191,7 @@ private void InitSoundPlayers()
             string? setting = null;
             string? pattern = null;
             SoundPlayer? player = null;
-switch (sound)
+            switch (sound)
             {
                 case RegexMatchSound.Success:
                     setting = AppSettings.playSuccessSound;
@@ -188,11 +208,70 @@ switch (sound)
             {
                 var regex = new Regex(pattern);
                 var match = regex.Match(line);
-                if (match.Success && player != null)
+                if (match.Success)
                 {
-                        player.Play();
-                        Thread.Sleep(500);
-                    }
+                    player?.Play();
+                    Thread.Sleep(500);
+                }
+            }
+        }
+
+        public void FindText(string? findWhatText, bool reverse)
+        {
+            if (findWhatText == null)
+            {
+                if (_findWhatText == "")
+                {
+                    return;
+                }
+                else
+                {
+                    findWhatText = _findWhatText;
+                }
+            }
+            else
+            {
+                _findWhatText = findWhatText;
+                AddToHistoryConfig(findWhatText, HistoryType.FindTexts);
+                var newHistoryList = ConvertHistoryToList(AppHistory.findTexts);
+                AppFindTextDialog?.UpdateHistory(newHistoryList);
+            }
+            var outputText = _mainWindow.GetOutput();
+            var ignoreCase = Config.StringToBool(AppSettings.findTextIgnoreCase);
+            if (ignoreCase == true)
+            {
+                findWhatText = findWhatText.ToLower();
+                outputText = outputText.ToLower();
+            }
+            var caretIndex = _mainWindow.GetOutputCaretIndex();
+            var foundIndex = -1;
+            if (!reverse)
+            {
+                // Find the first text occurrance in the output text substring starting at the caret position + 1
+                var findStartIndex = caretIndex + 1;
+                if (findStartIndex > outputText.Length)
+                {
+                    return;
+                }
+                foundIndex = outputText.IndexOf(findWhatText, findStartIndex);
+            }
+            else
+            {
+                // Reverse find the last text occurrance in the output text substring starting from the caret position - 1 and ending at the beginning
+                var findEndIndex = caretIndex - 1;
+                if (findEndIndex <= 0)
+                {
+                    return;
+                }
+                foundIndex = outputText.IndexOf(findWhatText, findEndIndex);
+            }
+            if (foundIndex >= 0)
+            {
+                _mainWindow.SetOutputCaretIndex(foundIndex);
+            }
+            else
+            {
+                SystemSounds.Exclamation.Play();
             }
         }
 

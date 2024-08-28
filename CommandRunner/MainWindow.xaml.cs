@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Diagnostics;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -37,12 +38,23 @@ namespace CommandRunner
         private void MainWindow_KeyDown(object sender, KeyEventArgs e)
         {
             var isControlDown = Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl);
+            var isShiftDown = Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift);
             if (isControlDown && e.Key == Key.F)
             {
                 var findTextDialog = new FindTextDialog(_runner);
                 findTextDialog.Owner = this;
                 findTextDialog.ShowDialog();
-        }
+            }
+            else if (e.Key == Key.F3)
+            {
+                if (isShiftDown)
+                {
+                    _runner.FindText(null, true);
+                } else
+                {
+                    _runner.FindText(null, false);
+                }
+            }
         }
 
         private void runButton_Click(object sender, RoutedEventArgs e)
@@ -56,23 +68,23 @@ namespace CommandRunner
         }
 
         private void clearButton_Click(object sender, RoutedEventArgs e)
-{
-}
+        {
+        }
 
         private void copyButton_Click(object sender, RoutedEventArgs e)
-{
-}
+        {
+        }
 
         private void settingsButton_Click(object sender, RoutedEventArgs e)
-{
+        {
             var settingsDialog = new SettingsDialog(_runner);
             settingsDialog.Owner = this;
             settingsDialog.ShowDialog();
         }
 
         private void helpButton_Click(object sender, RoutedEventArgs e)
-{
-}
+        {
+        }
 
         public void AppendToOutput(string text)
         {
@@ -114,6 +126,11 @@ namespace CommandRunner
             outputTextBox.Focus();
         }
 
+        public void FocusOutput()
+        {
+            outputTextBox.Focus();
+        }
+
         public void UpdateHistory(List<string> items, Runner.HistoryType type)
         {
             ComboBox? comboBox = null;
@@ -128,16 +145,31 @@ namespace CommandRunner
             }
             if (comboBox != null)
             {
-            comboBox.Items.Clear();
+                comboBox.Items.Clear();
                 if (items.Count() >= 1)
                 {
-                comboBox.Text = items[0];
+                    comboBox.Text = items[0];
                 }
-            foreach (string item in items)
-            {
-                comboBox.Items.Add(item);
-            }
+                foreach (string item in items)
+                {
+                    comboBox.Items.Add(item);
+                }
             }
         }
+
+        public string GetOutput()
+        {
+            return outputTextBox.Text;
+        }
+
+        public int GetOutputCaretIndex()
+        {
+            return outputTextBox.CaretIndex;
+        }
+
+        public void SetOutputCaretIndex(int index)
+        {
+            outputTextBox.CaretIndex = index;
+        }
     }
-    }
+}
