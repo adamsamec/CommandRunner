@@ -1,7 +1,7 @@
 {
   "settings": {
+    "findTextIgnoreCase": "yes",
     "checkForUpdateOnLaunch": "yes",
-    "ignoreCase": "yes",
     "playSuccessSound": "no",
     "successRegex": "",
     "playErrorSound": "no",

@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="commandLabel" xml:space="preserve">
-    <value>Command</value>
+    <value />
   </data>
   <data name="workingDirLabel" xml:space="preserve">
     <value>Working directory</value>
@@ -170,5 +170,23 @@
   </data>
   <data name="errorRegexLabel" xml:space="preserve">
     <value>Error regular expression</value>
+  </data>
+  <data name="findTextDialogTitle" xml:space="preserve">
+    <value>Find text</value>
+  </data>
+  <data name="findWhatLabel" xml:space="preserve">
+    <value>Find what</value>
+  </data>
+  <data name="findNextButton" xml:space="preserve">
+    <value>Find next</value>
+  </data>
+  <data name="findPreviousButton" xml:space="preserve">
+    <value>Find previous</value>
+  </data>
+  <data name="ignoreCaseCheckBox" xml:space="preserve">
+    <value>Ignore case</value>
+  </data>
+  <data name="cancelButton" xml:space="preserve">
+    <value>Cancel</value>
   </data>
 </root>

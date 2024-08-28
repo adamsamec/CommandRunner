@@ -61,6 +61,15 @@ namespace CommandRunner {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string cancelButton {
+            get {
+                return ResourceManager.GetString("cancelButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Check for update.
         /// </summary>
         public static string checkForUpdateButton {
@@ -106,7 +115,7 @@ namespace CommandRunner {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Command.
+        ///   Looks up a localized string similar to .
         /// </summary>
         public static string commandLabel {
             get {
@@ -133,11 +142,56 @@ namespace CommandRunner {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Find next.
+        /// </summary>
+        public static string findNextButton {
+            get {
+                return ResourceManager.GetString("findNextButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Find previous.
+        /// </summary>
+        public static string findPreviousButton {
+            get {
+                return ResourceManager.GetString("findPreviousButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Find text.
+        /// </summary>
+        public static string findTextDialogTitle {
+            get {
+                return ResourceManager.GetString("findTextDialogTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Find what.
+        /// </summary>
+        public static string findWhatLabel {
+            get {
+                return ResourceManager.GetString("findWhatLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Help.
         /// </summary>
         public static string helpButton {
             get {
                 return ResourceManager.GetString("helpButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ignore case.
+        /// </summary>
+        public static string ignoreCaseCheckBox {
+            get {
+                return ResourceManager.GetString("ignoreCaseCheckBox", resourceCulture);
             }
         }
         
@@ -187,7 +241,7 @@ namespace CommandRunner {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Settings.
+        ///   Looks up a localized string similar to Settings and more.
         /// </summary>
         public static string settingsButton {
             get {

@@ -196,6 +196,12 @@ switch (sound)
             }
         }
 
+        public void ChangeFindTextIgnoreCaseSetting(bool value)
+        {
+            AppSettings.findTextIgnoreCase = Config.BoolToString(value);
+            SaveSettings();
+        }
+
         public void ChangeCheckForUpdateOnLaunchSetting(bool value)
         {
             AppSettings.checkForUpdateOnLaunch = Config.BoolToString(value);

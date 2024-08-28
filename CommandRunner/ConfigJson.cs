@@ -8,8 +8,8 @@ public class ConfigJson
 
 public class Settings
 {
+    public string findTextIgnoreCase { get; set; }
     public string checkForUpdateOnLaunch { get; set; }
-    public string ignoreCase { get; set; }
     public string playSuccessSound { get; set; }
     public string successRegex { get; set; }
     public string playErrorSound { get; set; }
