@@ -1,8 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Media;
 using System.Text.RegularExpressions;
-using System.Windows.Shapes;
-
+using System.Windows;
 namespace CommandRunner
 {
     /// <summary>
@@ -280,6 +279,11 @@ namespace CommandRunner
             {
                 SystemSounds.Exclamation.Play();
             }
+        }
+
+        public void CopyToClipboard(string text)
+        {
+            Clipboard.SetText(text);
         }
 
         public void ChangeFindTextIgnoreCaseSetting(bool value)

@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -38,19 +37,47 @@ namespace CommandRunner
         private void MainWindow_KeyDown(object sender, KeyEventArgs e)
         {
             var isControlDown = Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl);
+            var isAltDown = Keyboard.IsKeyDown(Key.LeftAlt) || Keyboard.IsKeyDown(Key.RightAlt);
             var isShiftDown = Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift);
-            if (isControlDown && e.Key == Key.F)
+            var isWindowsDown = Keyboard.IsKeyDown(Key.LWin) || Keyboard.IsKeyDown(Key.RWin);
+
+            if (isControlDown && e.Key == Key.Enter && !isAltDown && !isShiftDown && !isWindowsDown)
+            {
+                RunCommand();
+            }
+            else if (isControlDown && e.Key == Key.K && !isAltDown && !isShiftDown && !isWindowsDown)
+            {
+                KillRunningProcess();
+            }
+            else if (isControlDown && e.Key == Key.L && !isAltDown && !isShiftDown && !isWindowsDown)
+            {
+                commandComboBox.Focus();
+            }
+            else if (isControlDown && e.Key == Key.O && !isAltDown && !isShiftDown && !isWindowsDown)
+            {
+                FocusOutput();
+            }
+            else if (isControlDown && e.Key == Key.D && !isAltDown && !isShiftDown && !isWindowsDown)
+            {
+                outputTextBox.Text = "";
+            }
+            else if (isControlDown && isShiftDown && e.Key == Key.C && !isAltDown && !isWindowsDown)
+            {
+                _runner.CopyToClipboard(outputTextBox.Text);
+            }
+            else if (isControlDown && e.Key == Key.F && !isAltDown && !isShiftDown && !isWindowsDown)
             {
                 var findTextDialog = new FindTextDialog(_runner);
                 findTextDialog.Owner = this;
                 findTextDialog.ShowDialog();
             }
-            else if (e.Key == Key.F3)
+            else if (e.Key == Key.F3 && !isControlDown && !isAltDown && !isWindowsDown)
             {
                 if (isShiftDown)
                 {
                     _runner.FindText(null, true);
-                } else
+                }
+                else
                 {
                     _runner.FindText(null, false);
                 }
@@ -126,7 +153,7 @@ namespace CommandRunner
         {
             runButton.IsEnabled = false;
             killButton.IsEnabled = true;
-            outputTextBox.Focus();
+            FocusOutput();
         }
 
         public void FocusOutput()
