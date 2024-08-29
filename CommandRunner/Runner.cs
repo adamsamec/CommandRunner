@@ -245,27 +245,34 @@ namespace CommandRunner
             }
             var caretIndex = _mainWindow.GetOutputCaretIndex();
             var foundIndex = -1;
+            var outOfRange = false;
             if (!reverse)
             {
-                // Find the first text occurrance in the output text substring starting at the caret position + 1
+                // Find the first text occurrance in the output text substring starting from the caret position + 1 and ending at the output end
                 var findStartIndex = caretIndex + 1;
-                if (findStartIndex > outputText.Length)
+                if (findStartIndex >= outputText.Length)
                 {
-                    return;
+                    outOfRange = true;
                 }
-                foundIndex = outputText.IndexOf(findWhatText, findStartIndex);
+                else
+                {
+                    foundIndex = outputText.IndexOf(findWhatText, findStartIndex);
+                }
             }
             else
             {
-                // Reverse find the last text occurrance in the output text substring starting from the caret position - 1 and ending at the beginning
+                // Reverse find the last text occurrance in the output text substring starting from the caret position - 1 and ending at the output beginning
                 var findEndIndex = caretIndex - 1;
-                if (findEndIndex <= 0)
+                if (findEndIndex < 0)
                 {
-                    return;
+                    outOfRange = true;
                 }
-                foundIndex = outputText.IndexOf(findWhatText, findEndIndex);
+                else
+                {
+                    foundIndex = outputText.LastIndexOf(findWhatText, findEndIndex);
+                }
             }
-            if (foundIndex >= 0)
+            if (foundIndex >= 0 && !outOfRange)
             {
                 _mainWindow.SetOutputCaretIndex(foundIndex);
             }
