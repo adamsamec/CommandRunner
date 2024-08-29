@@ -84,6 +84,9 @@ namespace CommandRunner
 
         private void helpButton_Click(object sender, RoutedEventArgs e)
         {
+            var helpDialog = new HelpDialog();
+            helpDialog.Owner = this;
+            helpDialog.ShowDialog();
         }
 
         public void AppendToOutput(string text)

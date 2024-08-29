@@ -189,4 +189,7 @@
   <data name="cancelButton" xml:space="preserve">
     <value>Cancel</value>
   </data>
+  <data name="helpDialogTitle" xml:space="preserve">
+    <value>Help</value>
+  </data>
 </root>

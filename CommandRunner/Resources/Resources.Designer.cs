@@ -187,6 +187,15 @@ namespace CommandRunner {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Help.
+        /// </summary>
+        public static string helpDialogTitle {
+            get {
+                return ResourceManager.GetString("helpDialogTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ignore case.
         /// </summary>
         public static string ignoreCaseCheckBox {
