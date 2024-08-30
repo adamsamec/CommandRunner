@@ -151,7 +151,7 @@
     <value>Close</value>
   </data>
   <data name="settingsDialogTitle" xml:space="preserve">
-    <value>Settings</value>
+    <value>Settings and more</value>
   </data>
   <data name="checkForUpdateOnLaunchCheckBox" xml:space="preserve">
     <value>Automatically check for update on launch</value>

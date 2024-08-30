@@ -19,6 +19,8 @@ namespace CommandRunner
 
         private void SettingsDialog_Loaded(object sender, RoutedEventArgs e)
         {
+            Title = CommandRunner.Resources.settingsDialogTitle + Consts.WindowTitleSeparator + Consts.AppName;
+
             // Set checkboxes state from settings
             checkForUpdateOnLaunchCheckBox.IsChecked = Config.StringToBool(_runner.AppSettings.checkForUpdateOnLaunch);
             playSuccessSoundCheckBox.IsChecked = Config.StringToBool(_runner.AppSettings.playSuccessSound);
