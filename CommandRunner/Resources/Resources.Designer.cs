@@ -70,6 +70,15 @@ namespace CommandRunner {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to What&apos;s new page load was not successful. Please verify that you are connected to the Internet..
+        /// </summary>
+        public static string changeLogRetrievalFailedMessage {
+            get {
+                return ResourceManager.GetString("changeLogRetrievalFailedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Check for update.
         /// </summary>
         public static string checkForUpdateButton {
@@ -129,6 +138,15 @@ namespace CommandRunner {
         public static string copyOutputButton {
             get {
                 return ResourceManager.GetString("copyOutputButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please wait while CommandRunner update {0} is beeing downloaded..
+        /// </summary>
+        public static string downloadingUpdateMessage {
+            get {
+                return ResourceManager.GetString("downloadingUpdateMessage", resourceCulture);
             }
         }
         
@@ -214,6 +232,15 @@ namespace CommandRunner {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your version of CommandRunner {0} is up to date..
+        /// </summary>
+        public static string noUpdateAvailableMessage {
+            get {
+                return ResourceManager.GetString("noUpdateAvailableMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Output.
         /// </summary>
         public static string outputLabel {
@@ -259,7 +286,7 @@ namespace CommandRunner {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Settings.
+        ///   Looks up a localized string similar to Settings and more.
         /// </summary>
         public static string settingsDialogTitle {
             get {
@@ -273,6 +300,15 @@ namespace CommandRunner {
         public static string successRegexLabel {
             get {
                 return ResourceManager.GetString("successRegexLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New CommandRunner version {0} is available. You currently have version {1}. Do you want to download the update and run its installation now?.
+        /// </summary>
+        public static string updateAvailableMessage {
+            get {
+                return ResourceManager.GetString("updateAvailableMessage", resourceCulture);
             }
         }
         

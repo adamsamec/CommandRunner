@@ -192,4 +192,16 @@
   <data name="helpDialogTitle" xml:space="preserve">
     <value>Help</value>
   </data>
+  <data name="downloadingUpdateMessage" xml:space="preserve">
+    <value>Please wait while CommandRunner update {0} is beeing downloaded.</value>
+  </data>
+  <data name="updateAvailableMessage" xml:space="preserve">
+    <value>New CommandRunner version {0} is available. You currently have version {1}. Do you want to download the update and run its installation now?</value>
+  </data>
+  <data name="noUpdateAvailableMessage" xml:space="preserve">
+    <value>Your version of CommandRunner {0} is up to date.</value>
+  </data>
+  <data name="changeLogRetrievalFailedMessage" xml:space="preserve">
+    <value>What's new page load was not successful. Please verify that you are connected to the Internet.</value>
+  </data>
 </root>

@@ -11,6 +11,26 @@ namespace CommandRunner
     /// </summary>
     public static class Utils
     {
+                public static bool IsFileInUse(string filePath)
+        {
+            try
+            {
+                using (Stream stream = new FileStream(filePath, FileMode.Open))
+                {
+                    return false;
+                }
+            }
+            catch
+            {
+                return true;
+            }
+        }
+
+                public static bool IsDirectoryEmpty(string path)
+        {
+            return !Directory.EnumerateFileSystemEntries(path).Any();
+        }
+        
         public static object? GetPropValue(object obj, string propName)
         {
             return obj.GetType().GetProperty(propName)?.GetValue(obj, null);

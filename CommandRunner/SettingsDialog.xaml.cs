@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using System.Windows.Controls;
 
 namespace CommandRunner
 {
@@ -27,8 +26,8 @@ namespace CommandRunner
             playErrorSoundCheckBox.IsChecked = Config.StringToBool(_runner.AppSettings.playErrorSound);
 
             // Set regex textboxes enabled state according to checkboxes and set their values from settings
-            successRegexTextBox.IsEnabled = (bool) playSuccessSoundCheckBox.IsChecked;
-            errorRegexTextBox.IsEnabled = (bool) playErrorSoundCheckBox.IsChecked;
+            successRegexTextBox.IsEnabled = (bool)playSuccessSoundCheckBox.IsChecked;
+            errorRegexTextBox.IsEnabled = (bool)playErrorSoundCheckBox.IsChecked;
             successRegexTextBox.Text = _runner.AppSettings.successRegex;
             errorRegexTextBox.Text = _runner.AppSettings.errorRegex;
 
@@ -46,8 +45,40 @@ namespace CommandRunner
             _runner.ChangeCheckForUpdateOnLaunchSetting(false);
         }
 
-        private void checkForUpdateButton_Click(object sender, RoutedEventArgs e)
+        private async void checkForUpdateButton_Click(object sender, RoutedEventArgs e)
         {
+            var doUpdate = false;
+            UpdateData? updateData = null;
+            try
+            {
+                updateData = await _runner.AppUpdater.CheckForUpdate();
+                if (updateData == null)
+                {
+                    var noUpdateAvailableDialog = new NoUpdateAvailableDialog();
+                    noUpdateAvailableDialog.Owner = this;
+                    noUpdateAvailableDialog.ShowDialog();
+                }
+                else
+                {
+                    var updateAvailableDialog = new UpdateAvailableDialog(_runner, updateData);
+                    updateAvailableDialog.Owner = this;
+                    doUpdate = updateAvailableDialog.ShowDialog() == true;
+                }
+            }
+            catch (Exception)
+            {
+                var updateCheckFailedDialog = new UpdateCheckFailedDialog();
+                updateCheckFailedDialog.Owner = this;
+                updateCheckFailedDialog.ShowDialog();
+            }
+            if (doUpdate && updateData != null)
+            {
+                _runner.AppUpdateData = updateData;
+                var downloadingUpdateDialog = new DownloadingUpdateDialog(_runner, updateData);
+                downloadingUpdateDialog.Owner = this;
+                downloadingUpdateDialog.DownloadUpdate();
+                downloadingUpdateDialog.ShowDialog();
+            }
         }
 
         private void playSuccessSoundCheckBox_Checked(object sender, RoutedEventArgs e)

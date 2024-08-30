@@ -2,6 +2,7 @@
 using System.Media;
 using System.Text.RegularExpressions;
 using System.Windows;
+
 namespace CommandRunner
 {
     /// <summary>
@@ -11,6 +12,7 @@ namespace CommandRunner
     {
         private Config _config = new Config();
         private MainWindow _mainWindow;
+        private Updater _appUpdater = new Updater();
         private Process? _runningProcess;
         private bool _isRunning = false;
         private SoundPlayer? _successSoundPlayer;
@@ -25,6 +27,11 @@ namespace CommandRunner
         {
             get { return _config.AppHistory; }
         }
+        public Updater AppUpdater
+        {
+            get { return _appUpdater; }
+        }
+        public UpdateData? AppUpdateData { get; set; }
         public bool IsRunning
         {
             get { return _isRunning; }
@@ -116,7 +123,7 @@ namespace CommandRunner
             {
                 return;
             }
-            _runningProcess.Kill(true);
+            _runningProcess?.Kill(true);
             _isRunning = false;
             ResetMainWindowTitle();
         }
