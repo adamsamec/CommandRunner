@@ -1,4 +1,4 @@
-## Introduction
+        ## Introduction
 CommandRunner is a Windows utility for running console commands with screen reader accessible command output. This utility has been created with the aim to allow easy text selection, searching, copying and clearing for the textual output of the user provided command.
 
 ## Features

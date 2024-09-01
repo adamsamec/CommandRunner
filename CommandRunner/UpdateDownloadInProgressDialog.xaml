@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:CommandRunner"
         xmlns:lang="clr-namespace:CommandRunner;assembly=CommandRunner"
         mc:Ignorable="d"
-        Title="{x:Static lang:Resources.updateDownloadInProgressTitle}"
+        Title="{x:Static lang:Resources.updateDownloadInProgressDialogTitle}"
         SizeToContent="WidthAndHeight"
 WindowStartupLocation="CenterScreen"
         ShowInTaskbar="False"

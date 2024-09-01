@@ -192,16 +192,86 @@
   <data name="helpDialogTitle" xml:space="preserve">
     <value>Help</value>
   </data>
-  <data name="downloadingUpdateMessage" xml:space="preserve">
-    <value>Please wait while CommandRunner update {0} is beeing downloaded.</value>
+  <data name="updateAvailableDialogTitle" xml:space="preserve">
+    <value>CommandRunner update available</value>
   </data>
   <data name="updateAvailableMessage" xml:space="preserve">
     <value>New CommandRunner version {0} is available. You currently have version {1}. Do you want to download the update and run its installation now?</value>
   </data>
-  <data name="noUpdateAvailableMessage" xml:space="preserve">
-    <value>Your version of CommandRunner {0} is up to date.</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="yesButton" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="notNowButton" xml:space="preserve">
+    <value>Not now</value>
+  </data>
+  <data name="whatsNewButton" xml:space="preserve">
+    <value>What's new</value>
+  </data>
+  <data name="whatsNewDialogTitle" xml:space="preserve">
+    <value>What's new in CommandRunner</value>
   </data>
   <data name="changeLogRetrievalFailedMessage" xml:space="preserve">
     <value>What's new page load was not successful. Please verify that you are connected to the Internet.</value>
+  </data>
+  <data name="noUpdateAvailableDialogTitle" xml:space="preserve">
+    <value>No update available</value>
+  </data>
+  <data name="noUpdateAvailableMessage" xml:space="preserve">
+    <value>Your version of CommandRunner {0} is up to date.</value>
+  </data>
+  <data name="updateCheckFailedDialogTitle" xml:space="preserve">
+    <value>Check for update failed</value>
+  </data>
+  <data name="updateCheckFailedMessage" xml:space="preserve">
+    <value>Check for update was not successful. Please verify that you are connected to the Internet.</value>
+  </data>
+  <data name="downloadingUpdateDialogTitle" xml:space="preserve">
+    <value>Downloading update</value>
+  </data>
+  <data name="downloadingUpdateMessage" xml:space="preserve">
+    <value>Please wait while CommandRunner update {0} is beeing downloaded.</value>
+  </data>
+  <data name="updateDownloadProgressLabel" xml:space="preserve">
+    <value>Downloading update</value>
+  </data>
+  <data name="updateDownloadFailedDialogTitle" xml:space="preserve">
+    <value>Update download failed</value>
+  </data>
+  <data name="updateDownloadFailedMessage" xml:space="preserve">
+    <value>Update download was not successful. Please verify that you are connected to the Internet.</value>
+  </data>
+  <data name="updateDownloadInProgressDialogTitle" xml:space="preserve">
+    <value>Update download in progress</value>
+  </data>
+  <data name="updateDownloadInProgressMessage" xml:space="preserve">
+    <value>The update is being downloaded. Do you want to cancel the download?</value>
+  </data>
+  <data name="cancelUpdateDownloadButton" xml:space="preserve">
+    <value />
+  </data>
+  <data name="continueUpdateDownloadButton" xml:space="preserve">
+    <value>Continue download</value>
+  </data>
+  <data name="updateInstallRunningDialogTitle" xml:space="preserve">
+    <value>Update installer is running</value>
+  </data>
+  <data name="updateInstallRunningMessage" xml:space="preserve">
+    <value>The update installer is running. Please finish or cancel the installation before downloading the update again.</value>
+  </data>
+  <data name="launchUpdateInstallerDialogTitle" xml:space="preserve">
+    <value>Launch update installer</value>
+  </data>
+  <data name="launchUpdateInstallerMessage" xml:space="preserve">
+    <value>Update installer has been downloaded. Do you want to launch it?</value>
+  </data>
+  <data name="launchUpdateInstallerButton" xml:space="preserve">
+    <value>Launch installer</value>
+  </data>
+  <data name="ZZZ" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="ZZXX" xml:space="preserve">
+    <value>ZZ</value>
   </data>
 </root>

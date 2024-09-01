@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:CommandRunner"
         xmlns:lang="clr-namespace:CommandRunner;assembly=CommandRunner"
         mc:Ignorable="d"
-        Title="{x:Static lang:Resources.updateCheckFailedTitle}"
+        Title="{x:Static lang:Resources.updateCheckFailedDialogTitle}"
         SizeToContent="WidthAndHeight"
 WindowStartupLocation="CenterScreen"
         ShowInTaskbar="False"

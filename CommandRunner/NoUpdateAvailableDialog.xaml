@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:CommandRunner"
         xmlns:lang="clr-namespace:CommandRunner;assembly=CommandRunner"
         mc:Ignorable="d"
-        Title="{x:Static lang:Resources.noUpdateAvailableTitle}"
+        Title="{x:Static lang:Resources.noUpdateAvailableDialogTitle}"
         SizeToContent="WidthAndHeight"
 WindowStartupLocation="CenterScreen"
         ShowInTaskbar="False"
