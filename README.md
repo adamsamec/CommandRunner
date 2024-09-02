@@ -10,12 +10,12 @@ CommandRunner is a Windows utility for running console commands with screen read
 
 ## Keyboard shortcuts
 * Control + Enter: Runs the command and focuses the output textbox.
-* Control + K: Kills the running process.
+* Control + K: Kills the running command process.
 * Control + L: Focuses the command textbox.
 * Control + O: Focuses the output textbox.
 * Control + F: Shows the find text dialog.
-* F3: Find the next text occurance.
-* Shift + F3: Find the previous text occurance.
+* F3: Find the next text occurrence.
+* Shift + F3: Find the previous text occurrence.
 * Control + D: Clears the output textbox.
 * Control + Shift + C: Copies the whole output textbox content to clipboard.
 
