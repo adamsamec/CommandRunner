@@ -21,6 +21,9 @@ CommandRunner supports the following global keyboard shortcuts.
 * Control + D: Clears the output textbox.
 * Control + Shift + C: Copies the whole output textbox content to clipboard.
 
+## What's new
+The complete [changelog can be found here][changelog].
+
 ## Download
 ### Installer
 Below, you can download the installer for CommandRunner. The installer creates a Desktop shortcut. 
