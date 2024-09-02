@@ -19,7 +19,7 @@ namespace CommandRunner {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -39,7 +39,7 @@ namespace CommandRunner {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CommandRunner.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CommandRunner.Resources.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -106,7 +106,7 @@ namespace CommandRunner {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Choose directory.
+        ///   Looks up a localized string similar to y.
         /// </summary>
         public static string chooseDirButton {
             get {
@@ -502,31 +502,11 @@ namespace CommandRunner {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Object.
+        ///   Looks up a localized string similar to Yes.
         /// </summary>
-        public static object yesButton {
+        public static string yesButton {
             get {
-                object obj = ResourceManager.GetObject("yesButton", resourceCulture);
-                return ((object)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ZZ.
-        /// </summary>
-        public static string ZZXX {
-            get {
-                return ResourceManager.GetString("ZZXX", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Object.
-        /// </summary>
-        public static object ZZZ {
-            get {
-                object obj = ResourceManager.GetObject("ZZZ", resourceCulture);
-                return ((object)(obj));
+                return ResourceManager.GetString("yesButton", resourceCulture);
             }
         }
     }
