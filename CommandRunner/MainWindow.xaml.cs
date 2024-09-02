@@ -22,6 +22,9 @@ namespace CommandRunner
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            // Chekc for update
+            _runner.CheckForUpdateOnLaunch();
+
             // Set history from config
             var commandsHistory = _runner.ConvertHistoryToList(_runner.AppHistory.commands);
             var workingDirsHistory = _runner.ConvertHistoryToList(_runner.AppHistory.workingDirs);

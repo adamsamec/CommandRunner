@@ -65,6 +65,30 @@ namespace CommandRunner
             _errorSoundPlayer.Load();
         }
 
+        public async void CheckForUpdateOnLaunch()
+        {
+            try
+            {
+                AppUpdateData = await AppUpdater.CheckForUpdate();
+                if (AppUpdateData != null)
+                {
+                    var updateAvailableDialog = new UpdateAvailableDialog(this, AppUpdateData);
+                    var doUpdate = updateAvailableDialog.ShowDialog() == true;
+                    if (doUpdate)
+                    {
+                        var downloadingUpdateDialog = new DownloadingUpdateDialog(this, AppUpdateData);
+                        downloadingUpdateDialog.DownloadUpdate();
+                        downloadingUpdateDialog.ShowDialog();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Ignore if check for update fails
+                Debug.WriteLine("Exception during launch update check: " + ex.ToString());
+            }
+        }
+
         public void RunCommand(string command, string workingDir)
         {
 
