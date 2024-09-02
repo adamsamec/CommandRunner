@@ -21,6 +21,20 @@ CommandRunner supports the following global keyboard shortcuts.
 * Control + D: Clears the output textbox.
 * Control + Shift + C: Copies the whole output textbox content to clipboard.
 
+## Download
+### Installer
+Below, you can download the installer for CommandRunner. The installer creates a Desktop shortcut. 
+
+[Download CommandRunner installer for Windows][installer-download].
+
+### Portable version
+CommandRunner is also available as a portable executable not requiring installation. Download the ZIP archive from the link below, extract it to a location of your choice and run it by executing the CommandRunner.exe file.
+
+[Download CommandRunner portable for Windows][portable-download].
+
+### Source files
+CommandRunner is a free and open-source software developed in C# as a WPF application using the .NET 8.0 framework. You can find all the necessary source files in the [CommandRunner][source-folder] folder of this repo.
+
 ## Contact and feedback
 If you have suggestions for CommandRunner improvement, problems with its functionality or other comments, you can drop me an email to [adam.samec@gmail.com](mailto:adam.samec@gmail.com)
 
@@ -47,3 +61,8 @@ FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
 COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+[changelog]: https://github.com/adamsamec/CommandRunner/blob/main/ChangeLog/ChangeLog.en-US.md
+[installer-download]: https://files.adamsamec.cz/apps/CommandRunner-win32-setup.exe
+[portable-download]: https://files.adamsamec.cz/apps/CommandRunner-win32.zip
+[source-folder]: https://github.com/adamsamec/CommandRunner/tree/main/CommandRunner
