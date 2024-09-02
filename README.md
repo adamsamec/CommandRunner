@@ -9,8 +9,6 @@ CommandRunner is a Windows utility for running console commands with screen read
 * In settings, CommandRunner can be configured so that notification sound will be played whenever a given regular expression matches a text in the output line of the currently running command. This way, if CommandRunner is in background, one can be notified when a given string, such as "ERROR", occurs in new output, or when a successful compilation occurs by detecting another given string.
 
 ## Keyboard shortcuts
-CommandRunner supports the following global keyboard shortcuts.
-
 * Control + Enter: Runs the command and focuses the output textbox.
 * Control + K: Kills the running process.
 * Control + L: Focuses the command textbox.
